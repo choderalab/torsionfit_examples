@@ -1,6 +1,6 @@
-## Examples
+## TorsionFit Examples
 
-Several examples using `torsionfit`
+examples and data for `torsionfit`
 
 ### Manifest
 
