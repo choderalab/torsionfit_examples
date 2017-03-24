@@ -1,9 +1,10 @@
-#!/bin/tcsh
+#!/bin/sh
 #  Batch script for MPI GPU job on the cbio cluster
 #  utilizing 4 GPUs, with one thread/GPU
 #
 # walltime : maximum wall clock time (hh:mm:ss)
 #PBS -l walltime=40:00:00
+#PBS -l mem=100gb
 #
 # join stdout and stderr
 #PBS -j oe
@@ -30,6 +31,7 @@
 # a: send mail if job is aborted
 # b: send mail when job begins execution
 # e: send mail when job terminates
+#PBS -M chaya.stern@choderalab.org
 #PBS -m abe
 #
 # filename for standard output (default = <job_name>.o<job_id>)
@@ -40,7 +42,7 @@
 # Change to working directory used for job submission
 cd $PBS_O_WORKDIR
 
-source activate py35
+source /cbio/jclab/home/chayas/anaconda/bin/activatee py35
 
 # Launch CPU job.
 python ../../run_sampler.py REPLACE
