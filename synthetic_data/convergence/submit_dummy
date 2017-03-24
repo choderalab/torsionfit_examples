@@ -42,7 +42,7 @@
 # Change to working directory used for job submission
 cd $PBS_O_WORKDIR
 
-source /cbio/jclab/home/chayas/anaconda/bin/activatee py35
+source /cbio/jclab/home/chayas/anaconda/bin/activate py35
 
 # Launch CPU job.
 python ../../run_sampler.py REPLACE
