@@ -32,11 +32,11 @@ if __name__ == "__main__":
                         help='name of sqlite database to store samples')
     parser.add_argument('-r', '--repeats', type=int, default=10,
                         help='How many toy models to samples')
-    parser.add_argument('-s', '--iterations', type=int, default=10,
+    parser.add_argument('-s', '--iterations', type=int, default=10000,
                         help='How many iterations to run')
 
     args = parser.parse_args()
-    t_equil = np.zeros((args.repeats, 3))
+    t_equil = np.zeros((args.repeats, 4))
     torsion_params = np.ones(shape=(args.repeats, 2, 6, 3))*np.nan
     for i in range(args.repeats):
         toy = ToyModel(true_value=args.true, initial_value=args.init, rj=args.reversible_jump, continuous=args.continuous,
@@ -47,10 +47,11 @@ if __name__ == "__main__":
         sampler.sample(iter=args.iterations)
         [t, g, N_ff] = detectEquilibration(sampler.trace('sigma')[:])
         t_equil[i, 0] = t
+        t_equil[i, 1] = N_ff
         mean = np.mean(sampler.trace('sigma')[t:])
         var = np.var(sampler.trace('sigma')[t:])
-        t_equil[i, 1] = mean
-        t_equil[i, 2] = var
+        t_equil[i, 2] = mean
+        t_equil[i, 3] = var
     np.save('t_equil_sigma', arr=t_equil)
     np.save('torsion_param', arr=torsion_params)
 
