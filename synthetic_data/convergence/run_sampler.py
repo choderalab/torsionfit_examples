@@ -1,7 +1,7 @@
 from torsionfit.toy_model import ToyModel
 import torsionfit.backends.sqlite_plus as db
 from pymc import MCMC
-from parmed.topologyobjects import DihedralType
+from parmed.topologyobjects import DihedralType, DihedralTypeList
 from pymbar.timeseries import detectEquilibration
 import numpy as np
 try:
@@ -24,9 +24,9 @@ if __name__ == "__main__":
                         help="Flag if phase proposal distribution should be continuous")
     parser.add_argument('-n', '--n_increments', type=int, default=18,
                         help="")
-    parser.add_argument('-i', '--init', type=DihedralType, default=None,
+    parser.add_argument('-i', '--init', type=str, default=None,
                         help="initial torsion parameters guess. If not specified will be randomly generated")
-    parser.add_argument('-t', '--true', type=DihedralType, default=None,
+    parser.add_argument('-t', '--true', type=str, default=None,
                         help="True value of dihedral parameters. If not specified, will be randomly generated")
     parser.add_argument('-d', '--db_name', type=str, default='toy.db',
                         help='name of sqlite database to store samples')
@@ -38,6 +38,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
     t_equil = np.zeros((args.repeats, 4))
     torsion_params = np.ones(shape=(args.repeats, 2, 6, 3))*np.nan
+    if args.init is not None:
+        args.init = args.init.split('_')
+        args.init = DihedralType(per=int(args.init[0]), phi_k=float(args.init[1]), phase=float(args.init[2]))
+    if args.true is not None:
+        args.true = args.true.split('_')
+        args.true = DihedralType(per=int(args.true[0]), phi_k=float(args.true[1]), phase=float(args.true[2]))
     for i in range(args.repeats):
         toy = ToyModel(true_value=args.true, initial_value=args.init, rj=args.reversible_jump, continuous=args.continuous,
                        n_increments=args.n_increments, sample_phase=args.phase)

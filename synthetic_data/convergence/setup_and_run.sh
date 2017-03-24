@@ -4,10 +4,10 @@
 RJ=True
 PHASE=False
 CONT=False
-INIT=None
-TRUE=None
+INIT=(1_10_180)
+TRUE=(2_10_180)
 
-CONDITION='rj_randomized'
+CONDITION='rj'
 
 CHUNKS=(0 1 2 3 4 5 6 7 8 9)
 
