@@ -40,7 +40,7 @@
 # Change to working directory used for job submission
 cd $PBS_O_WORKDIR
 
-setenv PATH /cbio/jclab/home/chayas/miniconda2/bin\:$PATH
+source activate py35
 
 # Launch CPU job.
 python ../../run_sampler.py REPLACE
