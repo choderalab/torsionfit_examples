@@ -16,11 +16,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run sampler on toy model')
     parser.add_argument('-a', '--nparray', type=str,
                         help='Name of file where numpy array is stored')
-    parser.add_argument('-rj', '--reversible_jump', type=bool, default=True,
+    parser.add_argument('-rj', '--reversible_jump', type=lambda s: s.lower() in ['true', 't', 'yes', '1'],
                         help="Flag if sampler should use reversible jump")
-    parser.add_argument('-p', '--phase', type=bool, default=False,
+    parser.add_argument('-p', '--phase', type=lambda s: s.lower() in ['true', 't', 'yes', '1'],
                         help="Flag if phases should be sampled")
-    parser.add_argument('-c', '--continuous', type=bool, default=False,
+    parser.add_argument('-c', '--continuous', type=lambda s: s.lower() in ['true', 't', 'yes', '1'],
                         help="Flag if phase proposal distribution should be continuous")
     parser.add_argument('-n', '--n_increments', type=int, default=18,
                         help="")
@@ -36,6 +36,7 @@ if __name__ == "__main__":
                         help='How many iterations to run')
 
     args = parser.parse_args()
+    print(args)
     t_equil = np.zeros((args.repeats, 4))
     torsion_params = np.ones(shape=(args.repeats, 2, 6, 3))*np.nan
     if args.init is not None:
