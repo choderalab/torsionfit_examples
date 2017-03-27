@@ -41,6 +41,10 @@ When the true and starting values were randomized, the distributions of t_equil 
 While the distribution of t_equl looks very similar for the eliminate and discrete model, the eliminate model 
 has the advantage of having less parameters. 
 
+In the above models, the labels were also sampled. All three models were compared to not using reversible 
+jump. The notebooks and figures are in the folders with the name of the model without `_rj`. The marginal posterior
+of Ks that have the label on look similar to the rj case. Marginal Posteriors of Ks that should have their label off are distributed around zero.
+
 ### Manifest
 * `toy.pdb` - pdb file of toy system
 * `toy.psf` - psf file for toy system
