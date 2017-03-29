@@ -15,8 +15,8 @@ butane_scan = ScanSet.parse_psi4_out(scan, structure)
 optimized = butane_scan.remove_nonoptimized()
 
 platform = mm.Platform.getPlatformByName('Reference')
-model = Model.TorsionFitModelEliminatePhase(param=param, frags=optimized, platform=platform,
-                                            param_to_opt=param_to_opt, rj=True, sample_n5=True)
+model = Model.TorsionFitModel(param=param, frags=optimized, platform=platform,
+                              param_to_opt=param_to_opt, rj=True, sample_n5=True)
 sampler = MCMC(model.pymc_parameters, db=sqlite_plus, dbname='butane_1.db', verbose=5)
 
 sampler.sample(100000)
