@@ -16,6 +16,6 @@ for C in ${REPEATS[*]}; do
     cd ${DB}_${SAMPLES}_${C}
     DBNAME=${DB}_${SAMPLES}_${C}
     sed "s/REPLACE/-rj $RJ -d ${DBNAME}.sqlite -i $SAMPLES/" ../../submit_dummy > submit
-    python ../../run_sampler.py -rj $RJ -d ${DBNAME}.sqlite
+    qsub submit
     cd ../
 done

@@ -19,7 +19,7 @@ if __name__ == "__main__":
                         help="initial torsion parameters guess. If not specified will be randomly generated")
     parser.add_argument('-d', '--db_name', type=str, default='butane.db',
                         help='name of sqlite database to store samples')
-    parser.add_argument('-s', '--iterations', type=int, default=10,
+    parser.add_argument('-s', '--iterations', type=int, default=10000,
                         help='How many iterations to run')
 
     args = parser.parse_args()
