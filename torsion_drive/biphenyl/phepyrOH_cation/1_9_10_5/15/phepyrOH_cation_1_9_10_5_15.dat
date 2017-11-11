@@ -1,4 +1,6 @@
 
+memory 5 Gb
+
 molecule phepyrOH_cation {
   symmetry C1
   1 1 

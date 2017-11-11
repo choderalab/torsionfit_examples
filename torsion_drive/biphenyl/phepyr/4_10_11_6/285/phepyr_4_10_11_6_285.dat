@@ -1,4 +1,6 @@
 
+memory 5 Gb
+
 molecule phepyr {
   symmetry C1
   0 1 

@@ -1,4 +1,6 @@
 
+memory 5 Gb
+
 molecule phepyrOH_neutral {
   symmetry C1
   0 1 

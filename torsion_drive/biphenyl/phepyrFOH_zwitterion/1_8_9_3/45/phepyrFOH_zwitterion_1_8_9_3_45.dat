@@ -1,4 +1,6 @@
 
+memory 5 Gb
+
 molecule phepyrFOH_zwitterion {
   symmetry C1
   0 1 
