@@ -29,6 +29,9 @@ molecule phepyrFOH_anion {
 }
 
 dih_string = "1 8 9 3 165"
-set optking fixed_dihedral = $dih_string
+set optking { fixed_dihedral = $dih_string
+              dynamic_level = 1
+              geom_maxiter = 250
+              print_trajectory_xyz_file = True }
 
 optimize('MP2/aug-cc-PVTZ')

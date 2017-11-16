@@ -1,5 +1,5 @@
 
-memory 5 Gb
+memory 8 Gb
 
 molecule phepyrFOH_cation {
   symmetry C1
@@ -31,6 +31,10 @@ molecule phepyrFOH_cation {
 }
 
 dih_string = "2 10 13 23 135"
-set optking fixed_dihedral = $dih_string
+set optking { fixed_dihedral = $dih_string
+              opt_coordinates = cartesian
+              dynamic_level = 1
+              geom_maxiter = 250
+              print_trajectory_xyz_file = True }
 
 optimize('MP2/aug-cc-PVTZ')
