@@ -28,10 +28,15 @@ molecule phepyr {
   units Angstrom
 }
 
-dih_string = "4 10 11 6 15"
+frozen_string = """
+4 xyz
+10 xyz
+11 xyz
+6 xyz
+"""
 set optking { opt_coordinates = cartesian
-              fixed_dihedral = $dih_string
-              dynamic_level = 1
+              frozen_cartesian = $frozen_string
+              consecutive_backsteps = 2
               geom_maxiter = 250
               print_trajectory_xyz_file = True }
 

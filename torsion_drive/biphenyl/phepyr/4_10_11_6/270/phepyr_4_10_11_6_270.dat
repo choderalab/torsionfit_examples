@@ -29,6 +29,10 @@ molecule phepyr {
 }
 
 dih_string = "4 10 11 6 270"
-set optking fixed_dihedral = $dih_string
+set optking { opt_coordinates = cartesian
+              fixed_dihedral = $dih_string
+              dynamic_level = 1
+              geom_maxiter = 250
+              print_trajectory_xyz_file = True }
 
 optimize('MP2/aug-cc-PVTZ')
