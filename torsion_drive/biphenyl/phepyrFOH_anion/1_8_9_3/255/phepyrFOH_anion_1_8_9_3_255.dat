@@ -1,0 +1,38 @@
+
+memory 5 Gb
+
+molecule phepyrFOH_anion {
+  symmetry C1
+  -1 1 
+  C      1.885   -1.036   -0.112
+  C      0.807   -0.463   0.561
+  C      4.145   -3.607   -0.195
+  C      5.008   -1.413   -0.674
+  C      1.800   -1.079   2.676
+  C      5.232   -4.125   -0.880
+  C      6.057   -2.030   -1.337
+  C      2.921   -1.631   0.608
+  C      4.038   -2.224   -0.095
+  C      0.764   -0.484   1.955
+  C      2.878   -1.652   2.002
+  N      6.194   -3.369   -1.455
+  O      -0.227   0.043   2.574
+  F      3.866   -2.220   2.709
+  H      1.904   -1.013   -1.200
+  H      0.011   -0.007   -0.025
+  H      3.408   -4.272   0.243
+  H      4.958   -0.331   -0.616
+  H      1.791   -1.109   3.764
+  H      5.361   -5.197   -0.988
+  H      6.839   -1.442   -1.805
+  units Angstrom
+}
+
+dih_string = "1 8 9 3 255"
+set optking { opt_coordinates = cartesian
+              fixed_dihedral = $dih_string
+              dynamic_level = 1
+              geom_maxiter = 250
+              print_trajectory_xyz_file = True }
+
+optimize('MP2/aug-cc-PVTZ')

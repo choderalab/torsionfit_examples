@@ -1,0 +1,43 @@
+
+memory 8 Gb
+
+molecule phepyr {
+  symmetry C1
+  0 1 
+  C      1.885   -1.036   -0.112
+  C      0.807   -0.463   0.561
+  C      2.921   -1.631   0.608
+  C      0.764   -0.484   1.955
+  C      2.878   -1.652   2.002
+  C      0.567   -0.822   4.788
+  C      2.900   -1.401   4.851
+  C      0.576   -0.858   6.173
+  C      2.805   -1.411   6.233
+  C      1.800   -1.079   2.676
+  C      1.755   -1.100   4.122
+  N      1.668   -1.146   6.915
+  H      1.917   -1.021   -1.198
+  H      -0.001   -0.002   0.000
+  H      3.760   -2.079   0.084
+  H      -0.084   -0.033   2.466
+  H      3.693   -2.120   2.550
+  H      -0.348   -0.584   4.253
+  H      3.845   -1.623   4.365
+  H      -0.326   -0.650   6.739
+  H      3.669   -1.638   6.847
+  units Angstrom
+}
+
+frozen_string = """
+4 xyz
+10 xyz
+11 xyz
+6 xyz
+"""
+set optking { opt_coordinates = cartesian
+              frozen_cartesian = $frozen_string
+              consecutive_backsteps = 2
+              geom_maxiter = 250
+              print_trajectory_xyz_file = True }
+
+optimize('MP2/aug-cc-PVTZ')
