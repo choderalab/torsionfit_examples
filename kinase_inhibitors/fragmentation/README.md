@@ -15,3 +15,7 @@ If it is more than a give threshold, continue to the next bond (recursively)
  
 ## Manifest
 * `fragment_kinase_inhibitors.py` - script for fragmenting molecules. 
+* `kinase_inhibitors.smi` - smi for FDA approved kinase inhibitors
+* `*.pdf` - visualization of the fragmentation
+* `nrotor_n.smi` - smi files for fragments with n rotors
+
